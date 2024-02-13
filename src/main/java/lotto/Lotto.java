@@ -1,11 +1,16 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
+import java.util.Random;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        //랜덤 난수 생성
+        numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
         validate(numbers);
         this.numbers = numbers;
     }
