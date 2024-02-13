@@ -22,9 +22,9 @@
 ## 클래스 목록
 ### [Model]
 #### Lotto.java
-* Lotto 객체
 * 생성자를 통해 객체를 생성할 때 마다 랜덤 난수가 설정되게 작성
 #### LottoRepository.java
+* createLotto()
 * 객체를 직접 가져오는 것이 아니라 Repository를 통해 원하는 데이터만 가져오도록 제어 
 
 ### [Controller]
@@ -32,6 +32,7 @@
 #### ServiceImpl.java
 
 ### [View]
-#### Result.java
+#### Input.java
 * 금액 및 번호를 입력 받는 View
+#### Output.java
 * 발행한 로또 수량 및 번호, 당첨 내역, 총 수익률을 출력하는 View
