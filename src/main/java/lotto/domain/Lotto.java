@@ -10,7 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         //랜덤 난수 생성
-        numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+        //numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
         validate(numbers);
         this.numbers = numbers;
     }
