@@ -1,9 +1,6 @@
-package lotto.domain;
-
-import camp.nextstep.edu.missionutils.Randoms;
+package lotto.model;
 
 import java.util.List;
-import java.util.Random;
 
 public class Lotto {
     private final List<Integer> numbers;
