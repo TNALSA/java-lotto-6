@@ -36,3 +36,7 @@
 * 금액 및 번호를 입력 받는 View
 #### Output.java
 * 발행한 로또 수량 및 번호, 당첨 내역, 총 수익률을 출력하는 View
+
+### 4️⃣ Message
+#### InputMsg.java
+#### OutputMsg.java
