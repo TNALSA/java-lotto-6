@@ -36,4 +36,15 @@ public class ServiceImpl implements Service {
         }
         return lottoList;
     }
+
+    //당첨 번호 입력받기
+    @Override
+    public void inputWinNum(){
+        String winNum = sc.next();
+    }
+
+    @Override
+    public void inputBonusNum(){
+        String BonusNum = sc.next();
+    }
 }

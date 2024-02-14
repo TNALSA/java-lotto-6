@@ -13,7 +13,7 @@ public class InputView {
     }
 
     //로또 당첨번호 입력하기
-    public void inputNumber(){
+    public void inputWinnumber(){
         System.out.println(InputMsg.WIN.getMessage());
     }
 
