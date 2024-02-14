@@ -13,12 +13,12 @@ public class InputView {
     }
 
     //로또 당첨번호 입력하기
-    public void inputWinnumber(){
+    public void inputWinNum(){
         System.out.println(InputMsg.WIN.getMessage());
     }
 
     //보너스 번호 입력받기
-    public void inputBonus(){
+    public void inputBonusNum(){
         System.out.println(InputMsg.BONUS.getMessage());
     }
 

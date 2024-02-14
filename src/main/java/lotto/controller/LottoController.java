@@ -21,6 +21,7 @@ public class LottoController {
 
     public void playLotto(){
         purchaseLotto();
+        inputWinNum();
     }
 
     public void purchaseLotto(){
@@ -35,9 +36,14 @@ public class LottoController {
         outputView.purchaseLotto(count,lottoList);
     }
 
-    public void inputWinnumber(){
-        inputView.inputWinnumber();
-        serviceimpl.inputWinnumber();
+    public void inputWinNum(){
+        inputView.inputWinNum();
+        serviceimpl.inputWinNum();
+    }
+
+    public void inputBonusNum(){
+        inputView.inputBonusNum();
+        serviceimpl.inputBonusNum();
     }
 
 
