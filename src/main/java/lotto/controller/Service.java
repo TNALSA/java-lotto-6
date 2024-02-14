@@ -1,4 +1,4 @@
 package lotto.controller;
 
-public class Service {
+public interface Service {
 }
