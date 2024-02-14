@@ -1,10 +1,16 @@
 package lotto.view;
 
 import lotto.message.OutputMsg;
+import lotto.model.Lotto;
+
+import java.util.*;
 
 public class OutputView {
-    public void purchaseLotto(int count){
-        System.out.println(String.valueOf(count)+OutputMsg.LOTTO);
+    public void purchaseLotto(int count, List<List<Integer>> lottoList){
+        System.out.println(String.valueOf(count)+OutputMsg.LOTTO.getMessage());
+        for(List lotto: lottoList){
+            System.out.println(lotto.toString());
+        }
     }
 
     public void totalPrint(){

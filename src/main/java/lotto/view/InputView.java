@@ -9,17 +9,17 @@ public class InputView {
 
     //로또 구매 금액 입력받기
     public void inputMoney(){
-        System.out.println(InputMsg.MONEY);
+        System.out.println(InputMsg.MONEY.getMessage());
     }
 
     //로또 당첨번호 입력하기
     public void inputNumber(){
-        System.out.println(InputMsg.WIN);
+        System.out.println(InputMsg.WIN.getMessage());
     }
 
     //보너스 번호 입력받기
     public void inputBonus(){
-        System.out.println(InputMsg.BONUS);
+        System.out.println(InputMsg.BONUS.getMessage());
     }
 
 }

@@ -6,8 +6,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        //랜덤 난수 생성
-        //numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+        System.out.println("numbers:"+numbers);
+
         validate(numbers);
         this.numbers = numbers;
     }
@@ -18,5 +18,8 @@ public class Lotto {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
     // TODO: 추가 기능 구현
 }
