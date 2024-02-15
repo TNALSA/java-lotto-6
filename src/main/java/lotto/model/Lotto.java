@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private int count;
 
     public Lotto(List<Integer> numbers) {
         System.out.println("numbers:"+numbers);
@@ -21,5 +22,12 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
-    // TODO: 추가 기능 구현
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

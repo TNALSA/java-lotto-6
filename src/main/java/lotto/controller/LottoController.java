@@ -18,8 +18,8 @@ public class LottoController {
    private final ServiceImpl serviceimpl = new ServiceImpl();
 
     List<List<Integer>> lottoList;
-    String WinNum;
-    String BonusNum;
+    List<String> winArr;
+    String bonusNum;
 
     public void playLotto(){
         purchaseLotto();
@@ -41,11 +41,16 @@ public class LottoController {
 
     public void inputWinNum(){
         inputView.inputWinNum();
-        WinNum = serviceimpl.inputWinNum();
+        winArr = serviceimpl.inputWinNum();
     }
 
     public void inputBonusNum(){
         inputView.inputBonusNum();
-        BonusNum = serviceimpl.inputBonusNum();
+        bonusNum = serviceimpl.inputBonusNum();
     }
+
+    public void compareNum(){
+       // serviceimpl.compareNum();
+    }
+
 }

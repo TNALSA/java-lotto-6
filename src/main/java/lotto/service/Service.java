@@ -6,8 +6,9 @@ public interface Service {
     int purchase();
     void countNumber(int money);
     List<List<Integer>> createLotto(int number);
-    String inputWinNum();
+    List<String> inputWinNum();
     String inputBonusNum();
+    void compareNum(List<String> winArr);
 
 
 }

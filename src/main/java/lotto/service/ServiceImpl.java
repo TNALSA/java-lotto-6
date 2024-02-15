@@ -39,14 +39,27 @@ public class ServiceImpl implements Service {
 
     //당첨 번호 입력받기
     @Override
-    public String inputWinNum(){
+    public List<String> inputWinNum(){
         String winNum = sc.next();
-        return winNum;
+        List<String> winArr = Arrays.asList(winNum);
+        System.out.println(winArr.toString());
+        return winArr;
     }
 
     @Override
     public String inputBonusNum(){
         String BonusNum = sc.next();
         return BonusNum;
+    }
+
+    @Override
+    public void compareNum(List<String> winArr){
+         for(int i=0;i<winArr.size();i++){
+            for(int j=0;j<lottoList.get(j).size();j++){
+                {
+
+                }
+            }
+         }
     }
 }
