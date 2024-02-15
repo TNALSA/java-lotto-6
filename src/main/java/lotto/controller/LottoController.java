@@ -18,10 +18,13 @@ public class LottoController {
    private final ServiceImpl serviceimpl = new ServiceImpl();
 
     List<List<Integer>> lottoList;
+    String WinNum;
+    String BonusNum;
 
     public void playLotto(){
         purchaseLotto();
         inputWinNum();
+        inputBonusNum();
     }
 
     public void purchaseLotto(){
@@ -38,14 +41,11 @@ public class LottoController {
 
     public void inputWinNum(){
         inputView.inputWinNum();
-        serviceimpl.inputWinNum();
+        WinNum = serviceimpl.inputWinNum();
     }
 
     public void inputBonusNum(){
         inputView.inputBonusNum();
-        serviceimpl.inputBonusNum();
+        BonusNum = serviceimpl.inputBonusNum();
     }
-
-
-
 }

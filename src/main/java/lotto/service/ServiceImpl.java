@@ -39,12 +39,14 @@ public class ServiceImpl implements Service {
 
     //당첨 번호 입력받기
     @Override
-    public void inputWinNum(){
+    public String inputWinNum(){
         String winNum = sc.next();
+        return winNum;
     }
 
     @Override
-    public void inputBonusNum(){
+    public String inputBonusNum(){
         String BonusNum = sc.next();
+        return BonusNum;
     }
 }
