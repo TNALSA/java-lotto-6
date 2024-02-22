@@ -11,7 +11,7 @@ import java.util.*;
 public class ServiceImpl implements Service {
     Scanner sc = new Scanner(System.in);
     int money;
-    List<List<Integer>> lottoList = new ArrayList<>();
+    List<Lotto> lottoList = new ArrayList<>();
     //로또 구매
     @Override
     public int purchase() {
@@ -28,11 +28,11 @@ public class ServiceImpl implements Service {
 
     //로또 생성
     @Override
-    public List<List<Integer>> createLotto(int number){
+    public List<Lotto> createLotto(int number){
         for(int i=0;i<number;i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
-            System.out.println("lotto"+lotto);
-            lottoList.add(lotto.getNumbers());
+            System.out.println("lotto >> "+lotto.getNumbers());
+            lottoList.add(lotto);
         }
         return lottoList;
     }
@@ -52,14 +52,25 @@ public class ServiceImpl implements Service {
         return BonusNum;
     }
 
-    @Override
-    public void compareNum(List<String> winArr){
-         for(int i=0;i<winArr.size();i++){
-            for(int j=0;j<lottoList.get(j).size();j++){
-                {
+    /**
+     * indexOf()로 변경예정
+     * winArr: 사용자가 입력한 당첨 번호
+     * lottoList: 사용자가 구매한 로또들
+     * count: 당첨 번호와 일치하는 번호의 갯수
+     * @param winArr
+     */
 
+    @Override
+    public void compareNum(List<String> winArr, Lotto lotto){
+        int count = 0;
+        List<Integer> curLotto;
+        for(int i=0; i<winArr.size(); i++){
+            for(int j=0;j<lotto.getNumbers().size();j++){
+                if(winArr.get(i).equals(String.valueOf(lotto.getNumbers().get(j)))) {
+                    lotto.setCount(++count);
                 }
             }
-         }
+        }
+
     }
 }

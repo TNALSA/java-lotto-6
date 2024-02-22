@@ -7,9 +7,7 @@ import lotto.service.Service;
 import lotto.service.ServiceImpl;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-
-
-import java.util.*;
+import java.util.List;
 
 public class LottoController {
 
@@ -17,7 +15,7 @@ public class LottoController {
    private final OutputView outputView = new OutputView();
    private final ServiceImpl serviceimpl = new ServiceImpl();
 
-    List<List<Integer>> lottoList;
+    List<Lotto> lottoList;
     List<String> winArr;
     String bonusNum;
 
@@ -50,7 +48,9 @@ public class LottoController {
     }
 
     public void compareNum(){
-       // serviceimpl.compareNum();
+        for(int i=0;i<lottoList.size();i++){
+            serviceimpl.compareNum(winArr,lottoList.get(i));
+        }
     }
 
 }

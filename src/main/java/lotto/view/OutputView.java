@@ -6,9 +6,9 @@ import lotto.model.Lotto;
 import java.util.*;
 
 public class OutputView {
-    public void purchaseLotto(int count, List<List<Integer>> lottoList){
+    public void purchaseLotto(int count, List<Lotto> lottoList){
         System.out.println(String.valueOf(count)+OutputMsg.LOTTO.getMessage());
-        for(List lotto: lottoList){
+        for(Lotto lotto: lottoList){
             System.out.println(lotto.toString());
         }
     }

@@ -3,7 +3,9 @@ package lotto.model;
 import java.util.List;
 
 public class Lotto {
+    //lotto numbers
     private final List<Integer> numbers;
+    //일치하는 번호의 갯수
     private int count;
 
     public Lotto(List<Integer> numbers) {
