@@ -63,14 +63,12 @@ public class ServiceImpl implements Service {
     @Override
     public void compareNum(List<String> winArr, Lotto lotto){
         int count = 0;
-        List<Integer> curLotto;
+
         for(int i=0; i<winArr.size(); i++){
-            for(int j=0;j<lotto.getNumbers().size();j++){
-                if(winArr.get(i).equals(String.valueOf(lotto.getNumbers().get(j)))) {
-                    lotto.setCount(++count);
-                }
+            if(lotto.getNumbers().contains(Integer.parseInt(winArr.get(i)))){
+                System.out.println("count: " + count);
+                lotto.setCount(++count); //0 1 2 3 4 ...
             }
         }
-
     }
 }
