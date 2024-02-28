@@ -7,6 +7,8 @@ public class Lotto {
     private final List<Integer> numbers;
     //일치하는 번호의 갯수
     private int count;
+    private boolean isBonus = false;
+
 
     public Lotto(List<Integer> numbers) {
         System.out.println("numbers:"+numbers);
@@ -31,5 +33,12 @@ public class Lotto {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public boolean getBonus(){
+        return isBonus;
+    }
+    public void setBonus(){
+        this.isBonus = true;
     }
 }

@@ -10,5 +10,7 @@ public interface Service {
     String inputBonusNum();
     void compareNum(List<String> winArr, Lotto lotto);
 
+    void compareBonus(String bonus, Lotto lotto);
+    void countNum();
 
 }
