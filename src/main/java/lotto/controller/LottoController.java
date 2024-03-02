@@ -8,6 +8,7 @@ import lotto.service.ServiceImpl;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
 
@@ -18,6 +19,8 @@ public class LottoController {
     List<Lotto> lottoList;
     List<String> winArr;
     String bonusNum;
+
+    Map<String,Integer> resMap;
 
     /**
      * 게임의 프로세스를 결정하는 playLotto()
@@ -33,6 +36,8 @@ public class LottoController {
         inputBonusNum();
         compareNum();
         compareBonus();
+        countNum();
+        showResult();
     }
 
     /**
@@ -82,11 +87,20 @@ public class LottoController {
         }
     }
 
+    public void countNum(){
+        resMap = serviceimpl.countNum();
+
+    }
+
     /**
      * 최종 결과를 출력하는 showResult()
      */
     public void showResult(){
         outputView.totalPrint();
-        outputView.resultPrint();
+        outputView.resultPrint(resMap.getOrDefault("three",0),
+                                resMap.getOrDefault("four",0),
+                                resMap.getOrDefault("five",0),
+                                resMap.getOrDefault("fiveBonus",0),
+                                resMap.getOrDefault("six",0));
     }
 }

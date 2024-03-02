@@ -11,6 +11,6 @@ public interface Service {
     void compareNum(List<String> winArr, Lotto lotto);
 
     void compareBonus(String bonus, Lotto lotto);
-    void countNum();
+    Map<String,Integer> countNum();
 
 }
