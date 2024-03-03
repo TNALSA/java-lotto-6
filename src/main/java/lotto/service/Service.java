@@ -12,5 +12,6 @@ public interface Service {
 
     void compareBonus(String bonus, Lotto lotto);
     Map<String,Integer> countNum();
+    float calRor();
 
 }

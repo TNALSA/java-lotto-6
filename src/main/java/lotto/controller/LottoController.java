@@ -38,6 +38,7 @@ public class LottoController {
         compareBonus();
         countNum();
         showResult();
+        showRor();
     }
 
     /**
@@ -52,9 +53,8 @@ public class LottoController {
         //로또 갯수
         int count = money/1000;
         //갯수만큼 로또 생성
+        outputView.purchaseLotto(count);
         lottoList = serviceimpl.createLotto(count);
-
-        outputView.purchaseLotto(count,lottoList);
     }
 
     /**
@@ -102,5 +102,8 @@ public class LottoController {
                                 resMap.getOrDefault("five",0),
                                 resMap.getOrDefault("fiveBonus",0),
                                 resMap.getOrDefault("six",0));
+    }
+    public void showRor(){
+        outputView.ratePrint(serviceimpl.calRor());
     }
 }

@@ -12,6 +12,7 @@ public class ServiceImpl implements Service {
     Scanner sc = new Scanner(System.in);
     int money;
     int three = 0, four = 0, five = 0, five_bonus = 0, six = 0;
+    int winMoney = 0;
 
     List<Lotto> lottoList = new ArrayList<>();
 
@@ -34,7 +35,7 @@ public class ServiceImpl implements Service {
     public List<Lotto> createLotto(int number){
         for(int i=0;i<number;i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
-            System.out.println("lotto >> "+lotto.getNumbers());
+//            System.out.println("lotto >> "+lotto.getNumbers());
             lottoList.add(lotto);
         }
         return lottoList;
@@ -89,21 +90,39 @@ public class ServiceImpl implements Service {
     @Override
     public Map<String,Integer> countNum(){
         for(int i=0;i<lottoList.size();i++){
-            if(lottoList.get(i).getCount()==3)
+            if(lottoList.get(i).getCount()==3){
                 resMap.put("three",three += 1);
+                winMoney += 5000;
+            }
 
-            if(lottoList.get(i).getCount()==4)
+            if(lottoList.get(i).getCount()==4){
                 resMap.put("four",four += 1);
+                winMoney += 50000;
+            }
 
-            if(lottoList.get(i).getCount()==5)
+            if(lottoList.get(i).getCount()==5){
                 resMap.put("five",five += 1);
+                winMoney += 1500000;
+            }
 
-            if((lottoList.get(i).getCount()==5) && (lottoList.get(i).getBonus()))
+            if((lottoList.get(i).getCount()==5) && (lottoList.get(i).getBonus())){
                 resMap.put("fiveBonus",five_bonus += 1);
+                winMoney += 30000000;
+            }
 
-            if(lottoList.get(i).getCount()==6)
+            if(lottoList.get(i).getCount()==6){
                 resMap.put("six",six += 1);
+                winMoney += 2000000000;
+            }
+
         }
         return resMap;
+    }
+
+    @Override
+    public float calRor(){
+        System.out.println("winMoney: "+winMoney);
+        System.out.println("money: "+money);
+        return ((float) winMoney / (float)money) * 100;
     }
 }
