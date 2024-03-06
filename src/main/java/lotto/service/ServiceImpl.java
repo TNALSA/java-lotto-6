@@ -10,7 +10,8 @@ import java.util.*;
 
 public class ServiceImpl implements Service {
     Scanner sc = new Scanner(System.in);
-    int money;
+    int money = 0;
+    //int money = 0;
     int three = 0, four = 0, five = 0, five_bonus = 0, six = 0;
     int winMoney = 0;
 
@@ -20,8 +21,20 @@ public class ServiceImpl implements Service {
     //로또 구매
     @Override
     public int purchase() {
-       money = sc.nextInt();
-       return money;
+        while(true){
+            try{
+                money = sc.nextInt();
+                if(money%1000 !=  0){
+                    throw new IllegalArgumentException();
+                }
+                return money;
+            }catch (IllegalArgumentException e){
+                System.out.println("[ERROR] 1000원 단위로 다시 입력 해주세요.");
+            }catch (InputMismatchException e2){
+                System.out.println("[ERROR] 숫자만 입력 가능합니다. 다시 입력 해주세요.");
+                sc.nextLine();
+            }
+        }
     }
 
     //로또 개수 계산
@@ -122,7 +135,8 @@ public class ServiceImpl implements Service {
     @Override
     public float calRor(){
         System.out.println("winMoney: "+winMoney);
-        System.out.println("money: "+money);
-        return ((float) winMoney / (float)money) * 100;
+        //System.out.println("money: "+money);
+//        return ((float) winMoney / (float)money) * 100;
+        return ((float) winMoney);
     }
 }

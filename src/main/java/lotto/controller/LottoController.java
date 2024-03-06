@@ -15,7 +15,7 @@ public class LottoController {
    private final InputView inputView = new InputView();
    private final OutputView outputView = new OutputView();
    private final ServiceImpl serviceimpl = new ServiceImpl();
-
+    int money = 0;
     List<Lotto> lottoList;
     List<String> winArr;
     String bonusNum;
@@ -48,8 +48,12 @@ public class LottoController {
      */
     public void purchaseLotto(){
         inputView.inputMoney();
-        //금액 입력하기
-        int money = serviceimpl.purchase();
+        try{
+            money = serviceimpl.purchase();
+        }catch(IllegalArgumentException e){
+            money = serviceimpl.purchase();
+        }
+
         //로또 갯수
         int count = money/1000;
         //갯수만큼 로또 생성
