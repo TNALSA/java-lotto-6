@@ -9,7 +9,7 @@ public interface Service {
     List<String> inputWinNum();
     int inputBonusNum();
     int compareNum(List<String> winArr, Lotto lotto);
-
+    Map<String,Integer> countNum(int conNumber, boolean isBonus);
     boolean compareBonus(int bonus, Lotto lotto);
 //    Map<String,Integer> countNum();
     float calRor();

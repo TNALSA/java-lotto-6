@@ -16,11 +16,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또는 최소 6자리입니다.");
         }
-//        for(int i=0 ; i<numbers.size() ; i++){
-//            if (numbers.equals(numbers.get(i))){
-//                throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
-//            }
-//        }
+
+        if (numbers.stream().distinct().count() != numbers.size()){
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+        }
     }
 
     public List<Integer> getNumbers() {
@@ -38,6 +37,11 @@ public class Lotto {
                 .count();
     }
 
+    /**
+     * 해당 로또 번호에 보너스 번호가 존재하는지 확인
+     * @param Bonus
+     * @return 보너스 번호 포함 여부
+     */
     public boolean isBonus(int Bonus){
         return numbers.contains(Bonus);
     }
