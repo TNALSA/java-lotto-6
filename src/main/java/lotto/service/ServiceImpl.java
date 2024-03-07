@@ -7,18 +7,18 @@ import java.util.*;
 
 import java.util.Scanner;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ServiceImpl implements Service {
     Scanner sc = new Scanner(System.in);
     int money = 0;
     //int money = 0;
-    int three = 0, four = 0, five = 0, five_bonus = 0, six = 0;
     int winMoney = 0;
+    int conNumber = 0;
+
 
     List<Lotto> lottoList = new ArrayList<>();
 
-    Map<String,Integer> resMap = new HashMap<>();
-    //로또 구매
     @Override
     public int purchase() {
         while(true){
@@ -48,7 +48,6 @@ public class ServiceImpl implements Service {
     public List<Lotto> createLotto(int number){
         for(int i=0;i<number;i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
-//            System.out.println("lotto >> "+lotto.getNumbers());
             lottoList.add(lotto);
         }
         return lottoList;
@@ -59,13 +58,14 @@ public class ServiceImpl implements Service {
     public List<String> inputWinNum(){
         String winNum = sc.next();
         List<String> winArr = Arrays.asList(winNum.split(","));
-        System.out.println("winArr: "+winArr.toString());
+
         return winArr;
     }
 
     @Override
-    public String inputBonusNum(){
-        String BonusNum = sc.next();
+    public int inputBonusNum(){
+        int BonusNum = sc.nextInt();
+
         return BonusNum;
     }
 
@@ -74,16 +74,15 @@ public class ServiceImpl implements Service {
      * @param lotto: 사용자가 구매한 로또
      */
     @Override
-    public void compareNum(List<String> winArr, Lotto lotto){
-        int count = 0;
+    public int compareNum(List<String> winArr, Lotto lotto){
+        List<Integer> convWinArr = winArr.stream()
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
 
-        for(int i=0; i<winArr.size(); i++){
-            if(lotto.getNumbers().contains(Integer.parseInt(winArr.get(i)))){
-                lotto.setCount(++count); //0 1 2 3 4 ...
-            }
-        }
+        conNumber =  lotto.isCoincide(convWinArr);//int형이 들어가야함.
+        System.out.println("conNumber >>>>>" + conNumber);
 
-        System.out.println("count: " + count);
+        return conNumber;
     }
 
     /**
@@ -92,45 +91,41 @@ public class ServiceImpl implements Service {
      * @param lotto: lotto 객체
      */
     @Override
-    public void compareBonus(String bonus, Lotto lotto){
-        for(int i=0;i<lotto.getNumbers().size();i++){
-            if(lotto.getNumbers().get(i).equals(Integer.valueOf(bonus))){
-                lotto.setBonus();
-            }
-        }
+    public boolean compareBonus(int bonus, Lotto lotto){
+        return lotto.isBonus(bonus);
     }
 
-    @Override
-    public Map<String,Integer> countNum(){
-        for(int i=0;i<lottoList.size();i++){
-            if(lottoList.get(i).getCount()==3){
-                resMap.put("three",three += 1);
-                winMoney += 5000;
-            }
-
-            if(lottoList.get(i).getCount()==4){
-                resMap.put("four",four += 1);
-                winMoney += 50000;
-            }
-
-            if(lottoList.get(i).getCount()==5){
-                resMap.put("five",five += 1);
-                winMoney += 1500000;
-            }
-
-            if((lottoList.get(i).getCount()==5) && (lottoList.get(i).getBonus())){
-                resMap.put("fiveBonus",five_bonus += 1);
-                winMoney += 30000000;
-            }
-
-            if(lottoList.get(i).getCount()==6){
-                resMap.put("six",six += 1);
-                winMoney += 2000000000;
-            }
-
-        }
-        return resMap;
-    }
+//    @Override
+//    public Map<String,Integer> countNum(){
+//        for(int i=0;i<lottoList.size();i++){
+//            if(lottoList.get(i).getCount()==3){
+//                resMap.put("three",three += 1);
+//                winMoney += 5000;
+//            }
+//
+//            if(lottoList.get(i).getCount()==4){
+//                resMap.put("four",four += 1);
+//                winMoney += 50000;
+//            }
+//
+//            if(lottoList.get(i).getCount()==5){
+//                resMap.put("five",five += 1);
+//                winMoney += 1500000;
+//            }
+//
+//            if((lottoList.get(i).getCount()==5) && (lottoList.get(i).getBonus())){
+//                resMap.put("fiveBonus",five_bonus += 1);
+//                winMoney += 30000000;
+//            }
+//
+//            if(lottoList.get(i).getCount()==6){
+//                resMap.put("six",six += 1);
+//                winMoney += 2000000000;
+//            }
+//
+//        }
+//        return resMap;
+//    }
 
     @Override
     public float calRor(){

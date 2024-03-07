@@ -7,11 +7,11 @@ public interface Service {
     void countNumber(int money);
     List<Lotto> createLotto(int number);
     List<String> inputWinNum();
-    String inputBonusNum();
-    void compareNum(List<String> winArr, Lotto lotto);
+    int inputBonusNum();
+    int compareNum(List<String> winArr, Lotto lotto);
 
-    void compareBonus(String bonus, Lotto lotto);
-    Map<String,Integer> countNum();
+    boolean compareBonus(int bonus, Lotto lotto);
+//    Map<String,Integer> countNum();
     float calRor();
 
 }

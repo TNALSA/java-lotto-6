@@ -7,6 +7,8 @@ import lotto.service.Service;
 import lotto.service.ServiceImpl;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,11 +18,14 @@ public class LottoController {
    private final OutputView outputView = new OutputView();
    private final ServiceImpl serviceimpl = new ServiceImpl();
     int money = 0;
+//    int conNumber = 0;
+//    int three = 0, four = 0, five = 0, five_bonus = 0, six = 0;
     List<Lotto> lottoList;
     List<String> winArr;
-    String bonusNum;
-
-    Map<String,Integer> resMap;
+    Map<String,Integer> resMap = new HashMap<>();
+    int bonusNum;
+    boolean isBonus;
+    int conNumber = 0;
 
     /**
      * 게임의 프로세스를 결정하는 playLotto()
@@ -36,8 +41,8 @@ public class LottoController {
         inputBonusNum();
         compareNum();
         compareBonus();
-        countNum();
-        showResult();
+        //countNum();
+        //showResult();
         showRor();
     }
 
@@ -48,15 +53,11 @@ public class LottoController {
      */
     public void purchaseLotto(){
         inputView.inputMoney();
-        try{
-            money = serviceimpl.purchase();
-        }catch(IllegalArgumentException e){
-            money = serviceimpl.purchase();
-        }
-
+        money = serviceimpl.purchase();
         //로또 갯수
         int count = money/1000;
         //갯수만큼 로또 생성
+
         outputView.purchaseLotto(count);
         lottoList = serviceimpl.createLotto(count);
     }
@@ -80,33 +81,26 @@ public class LottoController {
      */
 
     public void compareNum(){
+        //값 비교
         for(int i=0;i<lottoList.size();i++){
-            serviceimpl.compareNum(winArr,lottoList.get(i));
+           conNumber = serviceimpl.compareNum(winArr,lottoList.get(i));
         }
     }
 
     public void compareBonus(){
         for(int i=0;i<lottoList.size();i++){
-            serviceimpl.compareBonus(bonusNum, lottoList.get(i));
+            isBonus = serviceimpl.compareBonus(bonusNum, lottoList.get(i));
         }
     }
 
-    public void countNum(){
-        resMap = serviceimpl.countNum();
-
-    }
-
-    /**
-     * 최종 결과를 출력하는 showResult()
-     */
-    public void showResult(){
-        outputView.totalPrint();
-        outputView.resultPrint(resMap.getOrDefault("three",0),
-                                resMap.getOrDefault("four",0),
-                                resMap.getOrDefault("five",0),
-                                resMap.getOrDefault("fiveBonus",0),
-                                resMap.getOrDefault("six",0));
-    }
+//    public void showResult(){
+//        outputView.totalPrint();
+//        outputView.resultPrint(resMap.getOrDefault("three",0),
+//                                resMap.getOrDefault("four",0),
+//                                resMap.getOrDefault("five",0),
+//                                resMap.getOrDefault("fiveBonus",0),
+//                                resMap.getOrDefault("six",0));
+//    }
     public void showRor(){
         outputView.ratePrint(serviceimpl.calRor());
     }
